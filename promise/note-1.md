@@ -51,8 +51,9 @@
     1
     setTimeout
 
-### 为什么then会优先于定时器先执行？
-    因为等待队列（或者说是任务队列）其实是分为两个： macrotask（宏任务） 和 microtask（微任务），promise是存放在microtasks中，而定时器是存放在macrotasks中，但是在每次"事件循环"后会先执行microtask中的任务，并且当这些 microtask 执行结束后才能继续添加 microtask ，一直到整个 microtask 队列执行结束，才会执行macrotask中的任务。
+##### 为什么then会优先于定时器先执行？
+    因为等待队列（或者说是任务队列）其实是分为两个： macrotask（宏任务） 和 microtask（微任务）
+    promise是存放在microtasks中，而定时器是存放在macrotasks中，但是在每次"事件循环"后会先执行microtask中的任务，并且当这些 microtask 执行结束后才能继续添加 microtask ，一直到整个 microtask 队列执行结束，才会执行macrotask中的任务。
 
     macrotask主要包含：script（整体代码）、setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate（node.js 环境）
     micro-task主要包含：Promise.then、MutaionObserver、MessageChannel、process.nextTick（node.js 环境）
@@ -61,7 +62,8 @@
 
     Promise.resolve('Success');
     
-    这段代码会让这个Promise对象立即进入resolved状态，并将结果success传递给then指定的onFulfilled回调函数。由于Promise.resolve()也是返回Promise对象，因此可以用.then()处理其返回值
+    这段代码会让这个Promise对象立即进入resolved状态，并将结果success传递给then指定的onFulfilled回调函数
+    由于Promise.resolve()也是返回Promise对象，因此可以用.then()处理其返回值
     
     /*******等同于*******/
     new Promise(function (resolve) {
