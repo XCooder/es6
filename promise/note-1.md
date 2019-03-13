@@ -57,10 +57,10 @@
     每次"事件循环"后会先执行microtask中的任务，直到整个microtask队列执行结束，才会执行macrotask中的任务
 
     macrotask主要包含：
-    script（整体代码）、setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate（node.js 环境）
+    script（整体代码）、setTimeout、setInterval、I/O、UI交互事件、postMessage、MessageChannel、setImmediate（node环境）
     
     micro-task主要包含：
-    Promise.then、MutaionObserver、MessageChannel、process.nextTick（node.js 环境）
+    Promise.then、MutaionObserver、MessageChannel、process.nextTick（node环境）
     
 ## Promise.resolve() 和 Promise.reject()都是 new Promise（）的快捷方式
 
